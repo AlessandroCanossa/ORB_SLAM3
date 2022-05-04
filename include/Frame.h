@@ -21,10 +21,10 @@
 
 #include <vector>
 
-#include "../ORB_SLAM3/Thirdparty/DBoW2/DBoW2/BowVector.h"
-#include "../ORB_SLAM3/Thirdparty/DBoW2/DBoW2/FeatureVector.h"
+#include "../Thirdparty/DBoW2/DBoW2/BowVector.h"
+#include "../Thirdparty/DBoW2/DBoW2/FeatureVector.h"
 
-#include "../ORB_SLAM3/Thirdparty/Sophus/sophus/geometry.hpp"
+#include "../Thirdparty/Sophus/sophus/geometry.hpp"
 
 #include "ImuTypes.h"
 #include "ORBVocabulary.h"
