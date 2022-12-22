@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 project(ORB_SLAM3)
 
+set(CMAKE_CXX_STANDARD 14 CACHE STRING "The C++ standard to use")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
@@ -41,6 +44,10 @@ MESSAGE(${OpenCV_VERSION})
 find_package(Eigen3 3.4.0 REQUIRED)
 find_package(Pangolin REQUIRED)
 find_package(realsense2)
+
+add_subdirectory(Thirdparty/g2o)
+add_subdirectory(Thirdparty/DBoW2)
+add_subdirectory(Thirdparty/Sophus)
 
 include_directories(
 ${PROJECT_SOURCE_DIR}
@@ -113,14 +120,12 @@ include/SerializationUtils.h
 include/Config.h
 include/Settings.h)
 
-add_subdirectory(Thirdparty/g2o)
-
 target_link_libraries(${PROJECT_NAME}
-${OpenCV_LIBS}
+${OpenCV_LIBRARIES}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
-${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
+DBoW2
+g2o
 -lboost_serialization
 -lcrypto
 )
